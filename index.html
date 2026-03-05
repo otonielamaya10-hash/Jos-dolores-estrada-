@@ -1,168 +1,118 @@
-<!DOCTYPE html>
+DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca Digital José Dolores Estrada</title>
+    <title>App José Dolores Estrada</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --azul-nic: #0067b1;
-            --blanco: #ffffff;
-            --gris-claro: #f4f7f6;
-            --dorado-suave: #d4af37;
-        }
+        /* ESTILO VISUAL */
+        body { font-family: sans-serif; margin: 0; background-color: #f0f4f8; color: #333; }
+        header { background: #0067b1; color: white; padding: 25px; border-radius: 0 0 25px 25px; text-align: center; }
+        .foto-perfil { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #d4af37; margin-bottom: 10px; }
+        
+        /* BOTONES DEL MENÚ */
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
+        .tarjeta { background: white; padding: 20px; border-radius: 15px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.1); cursor: pointer; }
+        .tarjeta i { font-size: 30px; color: #0067b1; margin-bottom: 10px; }
+        .tarjeta h3 { margin: 5px 0; font-size: 16px; }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--gris-claro);
-            color: #333;
-        }
-
-        /* Encabezado Histórico */
-        header {
-            background: linear-gradient(rgba(0, 103, 177, 0.8), rgba(0, 103, 177, 0.9)), 
-                        url('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&q=80&w=500'); /* Imagen de fondo sutil */
-            background-size: cover;
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-        }
-
-        .perfil-img {
-            width: 80px;
-            height: 80px;
-            background: white;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            border: 3px solid var(--dorado-suave);
-        }
-
-        /* Contenedor de Módulos */
-        .container {
-            padding: 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 80px;
-        }
-
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-            cursor: pointer;
-        }
-
-        .card:active {
-            transform: scale(0.95);
-        }
-
-        .card i {
-            font-size: 2rem;
-            color: var(--azul-nic);
-            margin-bottom: 10px;
-        }
-
-        .card h3 {
-            font-size: 0.9rem;
-            margin: 5px 0;
-            color: #222;
-        }
-
-        .card p {
-            font-size: 0.7rem;
-            color: #666;
-        }
-
-        /* Barra de Navegación Inferior */
-        nav {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: white;
-            display: flex;
-            justify-content: space-around;
-            padding: 15px 0;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav i {
-            font-size: 1.2rem;
-            color: #aaa;
-        }
-
-        nav i.active {
-            color: var(--azul-nic);
-        }
-
-        .full-width {
-            grid-column: span 2;
-        }
+        /* SECCIONES DE INFORMACIÓN (OCULTAS) */
+        .info-box { display: none; background: white; margin: 20px; padding: 20px; border-radius: 15px; border-top: 5px solid #0067b1; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .info-box h2 { color: #0067b1; margin-top: 0; }
+        .btn-cerrar { background: #e74c3c; color: white; border: none; padding: 10px; width: 100%; border-radius: 8px; font-weight: bold; margin-top: 15px; }
+        
+        /* ESTILO TRIVIA */
+        .pregunta { background: #e8f4fd; padding: 15px; border-radius: 10px; margin-bottom: 10px; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="perfil-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Jose_Dolores_Estrada.jpg/220px-Jose_Dolores_Estrada.jpg'); background-size: cover;"></div>
-    <h1>José Dolores Estrada</h1>
-    <p>Héroe Nacional de Nicaragua</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Jose_Dolores_Estrada.jpg" class="foto-perfil">
+<h1>General Estrada</h1>
+<p>Biblioteca Digital Histórica</p>
 </header>
 
-<div class="container">
-    <div class="card" onclick="alert('Abriendo Biografía...')">
-        <i class="fas fa-book-open"></i>
-        <h3>Biografía</h3>
-        <p>Conoce su legado y valentía.</p>
-    </div>
-
-    <div class="card" onclick="alert('Cargando Línea de Tiempo...')">
-        <i class="fas fa-clock"></i>
-        <h3>Línea de Tiempo</h3>
-        <p>1792 - 1869</p>
-    </div>
-
-    <div class="card" onclick="alert('Abriendo Mapa Interactivo...')">
-        <i class="fas fa-map-marked-alt"></i>
-        <h3>Mapa San Jacinto</h3>
-        <p>Explora la hacienda.</p>
-    </div>
-
-    <div class="card" onclick="alert('¡Iniciando Trivia!')">
-        <i class="fas fa-trophy"></i>
-        <h3>Trivia</h3>
-        <p>¿Cuánto sabes del General?</p>
-    </div>
-
-    <div class="card full-width">
-        <p><i>"Aquel que no conoce su historia, está condenado a repetirla."</i></p>
-    </div>
+<div class="menu-grid">
+<div class="tarjeta" onclick="mostrar('bio')"><i class="fas fa-user-tie"></i><h3>Biografía</h3></div>
+<div class="tarjeta" onclick="mostrar('historia')"><i class="fas fa-calendar-alt"></i><h3>Historia</h3></div>
+<div class="tarjeta" onclick="mostrar('mapa')"><i class="fas fa-map-marker-alt"></i><h3>Mapa</h3></div>
+<div class="tarjeta" onclick="jugarTrivia()"><i class="fas fa-trophy"></i><h3>Trivia</h3></div>
 </div>
 
-<nav>
-    <i class="fas fa-home active"></i>
-    <i class="fas fa-archive"></i>
-    <i class="fas fa-video"></i>
-    <i class="fas fa-cog"></i>
-</nav>
 
-</body><script>
-function iniciarTrivia() {
-    let respuesta = prompt("Pregunta: ¿En qué hacienda derrotó el General Estrada a los filibusteros?\n\nA) San Jacinto\nB) San Jorge\nC) El Castillo");
-    
-    if (respuesta && respuesta.toLowerCase() === 'a' || respuesta.toLowerCase() === 'san jacinto') {
-        alert("¡Correcto! ¡Eres un experto en historia de Nicaragua! 🇳🇮");
-    } else {
-        alert("Casi... fue en la Hacienda San Jacinto el 14 de septiembre.");
+<div id="bio" class="info-box">
+    <h2>Biografía Resumida</h2>
+    <p><b>José Dolores Estrada Vado</b> (1792-1869) fue un militar nicaragüense y Héroe Nacional.</p>
+    <p>Es recordado principalmente por dirigir la victoria en la <b>Batalla de San Jacinto</b> el 14 de septiembre de 1856, donde defendió la soberanía nacional contra los filibusteros estadounidenses.</p>
+    <button class="btn-cerrar" onclick="cerrar()">Cerrar</button>
+</div>
+
+<div id="historia" class="info-box">
+    <h2>Línea de Tiempo</h2>
+    <ul>
+        <li><b>1792:</b> Nace en Nandaime, Granada.</li>
+        <li><b>1856:</b> Lidera la victoria en San Jacinto.</li>
+        <li><b>1869:</b> Fallece en Managua a los 77 años.</li>
+        <li><b>1971:</b> Declarado oficialmente Héroe Nacional.</li>
+    </ul>
+    <button class="btn-cerrar" onclick="cerrar()">Cerrar</button>
+</div>
+
+<div id="mapa" class="info-box">
+  <h2>Hacienda San Jacinto</h2>
+  <p>Ubicación en vivo:</p>
+  
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.451!2d-86.021!3d12.345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDIwJzQyLjAiTiA4NiwzMScxNS42Ilc!5e0!3m2!1ses!2sni!4v123456789" width="100%" height="200" style="border:0; border-radius:10px;" allowfullscreen="" loading="lazy"></iframe>
+
+  <p>Ubicada en el km 39.5 Carretera Norte, Tipitapa.</p>
+  <button class="btn-cerrar" onclick="cerrar()">Cerrar</button>
+</div>
+
+  <button class="btn-cerrar" onclick="cerrar()" style="margin-top:15px;">Cerrar</button>
+</div>
+<script>
+    // FUNCIONES PARA QUE LA APP RESPONDA
+    function mostrar(id) {
+        cerrar(); // Cierra lo que esté abierto
+        document.getElementById(id).style.display = "block";
+        window.scrollTo(0, document.body.scrollHeight);
     }
+
+    function cerrar() {
+        document.getElementById('bio').style.display = "none";
+        document.getElementById('historia').style.display = "none";
+        document.getElementById('mapa').style.display = "none";
+    }
+
+    function jugarTrivia() {
+    // PREGUNTA 1
+    let p1 = prompt("1. ¿En qué año fue la Batalla de San Jacinto?\nA) 1821\nB) 1856\nC) 1900");
+    if (p1 && p1.toLowerCase() !== 'b' && p1 !== '1856') {
+        alert("¡Casi! Era 1856. ¡Sigue intentando!");
+        return; // Se detiene si falla
+    }
+
+    // PREGUNTA 2
+    let p2 = prompt("2. ¿Cómo se llamaba la Hacienda donde peleó Estrada?\nA) San Jacinto\nB) San Juan\nC) La Perfecta");
+    if (p2 && p2.toLowerCase() !== 'a' && !p2.toLowerCase().includes('jacinto')) {
+        alert("¡Incorrecto! Era la Hacienda San Jacinto.");
+        return;
+    }
+
+    // PREGUNTA 3
+    let p3 = prompt("3. ¿Con qué objeto se dice que Andrés Castro derribó a un filibustero?\nA) Un fusil\nB) Una piedra\nC) Una espada");
+    if (p3 && p3.toLowerCase() !== 'b' && !p3.toLowerCase().includes('piedra')) {
+        alert("¡Oh no! Andrés Castro usó una piedra.");
+        return;
+    }
+
+    // VICTORIA FINAL
+    alert("¡FELICIDADES! 🎉\nHas respondido todo correctamente.\nEres un experto en la historia del General Estrada. 🇳🇮");
 }
+
 </script>
 
+</body>
 </html>
